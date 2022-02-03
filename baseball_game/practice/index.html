@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <title>Baseball</title>
+    <link rel="stylesheet" href="../../utils/reset.css">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main>
+      <section>
+        <div class="ball_answer">정답은?</div>
+        <form>
+          <label for="question"></label>
+          <input type="number" class="ball_input" id="question" name="question" min="0" max="9999" size="4"/> 
+          <!-- input type="number"의 step속성: stepUp()/stepDown()시 몇씩 올리거나 내릴지 정할 수 있음  -->
+          <!-- ex) step="5" = 5, 10, 15, 20 ~ 20, 15, 10, 5 -->
+          <button>도전</button>
+        </form>
+        <div class="ball_question">결과</div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

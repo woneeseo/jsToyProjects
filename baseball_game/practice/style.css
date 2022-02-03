@@ -1,0 +1,91 @@
+@charset "utf-8";
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100vh; /* 세로기준 화면 정중앙에 위치시킴 */
+}
+
+main::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('./assets/bg.jpg') no-repeat 0 0 / cover;
+    opacity: 0.6;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    /* position: relative; 이 속성을 구현하지 않으면 
+    view에서 쌓인 요소들에 원하는 요소가 묻히게 되는데,
+    이 속성을 만나서 우선순위가 위로 올라오게 됨  */
+    z-index: 1;
+    width: calc(100vw - 20px);
+    /* calc() 사용시에는 부호 사이에 꼭 띄어쓰기 해야함 
+        사용하는 경우 어느정도 요소의 최소값이 보장됨 (화면끝에 붙지 않도록 설정해줄 수 있음 */
+    height: 100%;
+}
+
+.ball_answer {
+    text-align: center;
+    width: 180px;
+    padding: 20px;
+    border: 1px solid white;
+    background-color: #fff;
+    font-size: 18px;
+}
+
+.ball_question {
+    margin-top: 30px;
+    padding: 30px;
+    font-size: 20px;
+    background-color: #333;
+    text-align: center;
+    color: #fff;
+}
+
+.ball_question span {
+    display: block;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.ball_question span em {
+    font-style: normal;
+}
+
+form {
+    display: flex;
+    margin-top: 30px;
+}
+
+form .ball_input {
+    width: 100px;
+    height: 30px;
+    border: 1px solid #fff;
+}
+
+form button {
+    background-color: #333;
+    border: none;
+    width: 70px;
+    height: 30px;
+    margin-left: 10px;
+    padding: 0 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+form button:hover, form button:active, form button:focus {
+    opacity: 0.8;
+}

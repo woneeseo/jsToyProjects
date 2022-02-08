@@ -1,13 +1,18 @@
 @charset "utf-8";
 
 .blind {
-  text-indent: -9999px;
+/* seo측면에서 텍스트를 검색엔진에 주고싶은데 
+    마크업스타일에서는 보여지지 않았으면 하는 경우 사용하는 클래스 */
+  text-indent: -9999px; 
+  /* text-indent : 들여쓰기/내어쓰기 속성 (음수:내어쓰기/ 양수:들여쓰기) 
+    -9999px로 내어쓰기 해 화면에서 안보이게 한 뒤, overflow:hidden으로 완전히 안보이게 처리 */
   overflow: hidden;
 }
 
 main {
   display: flex;
   flex-direction: column;
+  /* flex-direction: 플렉스컨테이너 내에서 아이템배치 (column은 아이템을 세로로 배치) */
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -28,6 +33,7 @@ section {
   justify-content: center;
   width: 90vw;
   height: calc(100vh - 150px);
+  /* 화면의 viewport높이에서 150px정도 떨어지도록 설정 */
   border: 1px solid #dedede;
   padding: 30px;
   background: #212121;
@@ -38,16 +44,16 @@ section {
   align-items: center;
   width: 400px;
   height: 40px;
-  max-width: 100%;
+  max-width: 100%; /* 나중에 content사이즈가 줄어들 때를 대비해 설정 */
 }
 
 .search_bar input {
-  width: calc(100% - 64px);
+  width: calc(100% - 64px); /* 64px -> 돋보기버튼영역 / 타이핑 시 영역이 돋보기쪽으로 넘어가지 않도록 처리 */
   height: 100%;
   padding: 0 10px;
   border: 1px solid #303030;
   background-color: #121212;
-  caret-color: #fff;
+  caret-color: #fff; /* 커서 색을 변경해줌 */
   font-size: 16px;
   color: #fff;
 }
@@ -79,6 +85,7 @@ section {
   height: 100%;
 }
 
+/* 돋보기버튼 디자인 */
 .search_bar label .btn_search {
   display: block;
   width: 100%;
@@ -96,7 +103,9 @@ section {
 .search_bar label .btn_search svg {
   width: 100%;
   height: 100%;
-  pointer-events: none;
+  pointer-events: none; 
+  /* 돋보기 svg가 클릭 이벤트를 가질 수 있는데, 이 이벤트를 막아주는 속성
+    클릭이벤트를 가지지 않게 하여야 밑에 깔린 버튼의 이벤트를 실행시킬 수 있음 */
 }
 
 .search_bar label .btn_search svg path {
@@ -104,8 +113,8 @@ section {
 }
 
 .contents {
-  display: none;
-  justify-content: flex-start;
+  display: none; /* 박스에 비해 컨텐츠내용이 넘쳐서 컨텐츠를 가려줌 */
+  justify-content: flex-start; /* 왼쪽부터 아이템이 배열될 수 있도록 해줌 */
   flex-wrap: wrap;
   width: 100%;
   height: 100%;
@@ -133,7 +142,10 @@ section {
   display: flex;
   flex-direction: column;
   position: relative;
-  flex: 0 0 23%;
+  flex: 0 0 23%; 
+    /* grow shirink width / 
+        width 23%인 이유-> margin값 좌우 1%를 더하면 한 아이템당 flex-container안에서 25%의 영역을 갖게됨
+        -> 한 줄에 4개의 썸네일을 띄워줄 수 있음 / 이 퍼센테이지를 변경해주면 한줄에 2개, 3개등으로 변경이 가능 */
   margin: 1%;
 }
 
@@ -144,11 +156,13 @@ section {
 }
 
 .contents figure .btn_view.focus-visible {
+    /* 마우스오버 하였을 때, 선택한 영역의 밝기가 약간 밝아지도록 해줌 */
   -webkit-filter: brightness(1.2);
           filter: brightness(1.2);
 }
 
 .contents figure .btn_view::before {
+    /* 아래에 있는 요소가 위로 딸려올라가지 않도록 함 */
   content: '';
   display: block;
   width: 100%;
@@ -184,6 +198,7 @@ section {
 }
 
 .contents figcaption i {
+/* flex는 컨텐츠가 많아지면 기존 요소들을 밀어내기때문에 flex-shirink:0 을 주면 밀어내지 않게 됨 */
   flex-shrink: 0;
   display: block;
   width: 36px;
@@ -208,10 +223,13 @@ section {
 .contents figcaption .description strong {
   width: 100%;
   margin-bottom: 4px;
-  display: -webkit-box;
+  display: -webkit-box; 
+  /* 브라우저에서 한줄처리를 해주는 elipsis속성을 부여해줄 때 
+    display: -webkit-box;를 사용하면 -webkit-line-clamp: 2;속성으로 최대 몇줄까지 표시한 뒤 elipsis할건지 정할 수 있다 */
   -webkit-line-clamp: 2;
   /* autoprefixer: off */
   -webkit-box-orient: vertical;
+  /* orient: verical 로 2줄이 넘어가게 되면 elipsis처리를 해줌 */
   /* autoprefixer: on */
   overflow: hidden;
   text-overflow: ellipsis;
@@ -223,10 +241,11 @@ section {
 
 .contents figcaption .description em {
   display: block;
-  font-style: normal;
+  font-style: normal; /* em이 기본적으로 가지고있는 틸트 속성을 없애줌 */
   line-height: 2;
 }
 
+/* Live now 스타일 */
 .contents figcaption .description .stream {
   display: block;
   width: 65px;
@@ -238,6 +257,7 @@ section {
   text-align: center;
 }
 
+/* view페이지 스타일 */
 .controls {
   display: flex;
   align-items: center;
@@ -281,7 +301,10 @@ section {
   height: 15px;
 }
 
+/* @media 쿼리 : 반응형 페이지를 만들 때 유용함 */
+
 @media (max-width: 1024px) {
+    /* max-width가 1024일 때 한 페이지에 3개의 컨텐츠가 배치되도록 */
   .contents figure {
     flex: 0 0 31.333%;
   }
@@ -291,12 +314,14 @@ section {
 }
 
 @media (max-width: 767px) {
+    /* max-width가 767일 때 한 페이지에 2개의 컨텐츠가 배치되도록 */
   .contents figure {
     flex: 0 0 48%;
   }
 }
 
 @media (max-width: 480px) {
+     /* max-width가 480일 때 한 페이지에 1개의 컨텐츠가 배치되도록 */
   .contents figure {
     flex: 0 0 100%;
     margin: 0;

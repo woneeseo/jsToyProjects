@@ -6,16 +6,19 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"
     />
-    <title>너튜브</title>
+    <title>youtube</title>
     <link rel="stylesheet" href="../../utils/reset.css">
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <main>
-    <h1>너튜브</h1>
+    <h1>youtube</h1>
     <section>
+      <!-- section컨텐츠 안에는 헤딩태그가 존재해야함 (시멘틱태그를 사용하기 위해 보이지 않는 컨텐츠로 blind처리) 
+            이 부분을 이용하여 사이트의 컨텐츠 부분이라고 검색엔진에 알려줄 수 있음 -->
       <h2 class="blind">너튜브 콘텐츠</h2>
+      <!-- 서치바 시작 -->
       <div class="search_bar">
         <input
           type="text"
@@ -24,7 +27,9 @@
           placeholder="검색"
           autocomplete="off"
         />
+        <!-- autocomplate => 자동완성기능 사용여부 -->
         <label for="search">
+          <!-- 돋보기버튼같은경우 button태그로 작성하는 것이 더 좋지만 a태그를 사용하는 경우도 있음 -->
           <a href="#none" class="btn_search">
             <svg
               viewBox="0 0 24 24"
@@ -32,23 +37,35 @@
               focusable="false"
               class="ico-zoom"
             >
+            <!-- preserveAspectRatio="xMidYMid meet" =>svg에 넓이나 높이를 부여해주면 그 넓이를 따라 아이콘 크기가 맞춰짐 -->
               <path
                 d="M20.87,20.17l-5.59-5.59C16.35,13.35,17,11.75,17,10c0-3.87-3.13-7-7-7s-7,3.13-7,7s3.13,7,7,7c1.75,0,3.35-0.65,4.58-1.71 l5.59,5.59L20.87,20.17z M10,16c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S13.31,16,10,16z"
               ></path>
+              <!-- 벡터이미지 : 비트맵처럼 도트표현된것이 아니므로 이미지가 아무리 확대되어도 깨지는현상이 없음 -->
             </svg>
           </a>
         </label>
       </div>
+      <!-- 서치바 끝 -->
+
+      <!-- 썸네일리스트 시작 -->
       <div class="contents list">
         <figure>
+          <!-- figure: 영상이나 썸네일이미지 리스트와 같은경우, 이미지들의 이름을 figcaption 으로 부여해줄 수 있음
+                        더욱 더 시멘틱하고 검색엔진이 다양한 정보를 제공할 수 있는 컨텐츠로 제공할 수 있어 사용 (구글의 영상, 이미지등 태그에 사용)
+                        검색최적화에 도움이 됨 -->
           <a href="#none" class="btn_view">
             <picture>
+              <!-- 픽쳐태그의 기본값으로 source에 이미지를 넣어줌 -->
+              <!-- source가 2개인 이유 : 기본썸네일은 .jpg로, 마우스 오버시에는 .webp파일을 사용하기 위해 -->
               <source srcset="./assets/sample.jpg" type="image/webp" />
               <source srcset="./assets/sample.jpg" type="image/jpg" />
+              <!-- 오페라와 같은 picture태그가 적용되지 않는 일부 브라우저에서 썸네일 이미지가 표시될 수 있도록 img사용 -->
               <img src="./assets/sample.jpg" alt="sample" />
             </picture>
           </a>
           <figcaption>
+            <!-- figcaption: figure태그의 정보를 알려줌 (썸네일 이미지 하단의 제목, 작성자등의 내용)-->
             <i><img src="./assets/svt.jpeg" alt="icon" /></i>
             <span class="description"
               ><strong>Lorem Ipsum Powerful movie</strong>
@@ -149,6 +166,9 @@
           </figcaption>
         </figure>
       </div>
+      <!-- 썸네일리스트 끝 -->
+
+      <!-- 컨텐츠뷰 시작 -->
       <div class="contents view">
         <figure>
           <video autoplay>
@@ -163,6 +183,7 @@
             </span>
           </figcaption>
           <span class="controls">
+            <!-- 재생범위 -->
             <progress
               min="0"
               max="100"
@@ -180,6 +201,7 @@
               value="1"
               class="js-volume"
             />
+            <!-- 볼륨 컨트롤 -->
             <button type="button" class="js-mute">Mute</button>
             <button type="button" class="js-fullScreen" accesskey="T">
               FullScreen
@@ -187,6 +209,8 @@
           </span>
         </figure>
       </div>
+      <!-- 컨텐츠뷰 끝 -->
+
     </section>
   </main>
     <script src="script.js"></script>

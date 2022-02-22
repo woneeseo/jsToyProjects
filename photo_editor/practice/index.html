@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <title>Photo Editor</title>
+    <link rel="stylesheet" href="../../utils/reset.css">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main>
+      <h1>Photo Editor</h1>
+      <section>
+        <!-- 이미지 드레그앤드롭 + 미리보기 영역 -->
+        <div class="editor_wrap">
+          <div class="drag_area">이미지를 드래그 앤 드롭 하세요.
+              <input type="file">
+          </div>
+          <div class="canvas_wrap">
+            <canvas class="canvas"></canvas>
+            <img src="./assets/sample.jpg" alt="smaple" class="fileImage">
+          </div>
+        </div>
+        <!-- 이미지에디팅 영역 -->
+        <div class="image_wrap"></div>
+        <div class="button_wrap">
+          <button class="btn_flip" type="button">플립</button>
+          <button class="btn_sepia" type="button">세피아</button>
+          <button class="btn_gray" type="button">그레이</button>
+          <button class="btn_save" type="button">저장</button>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
